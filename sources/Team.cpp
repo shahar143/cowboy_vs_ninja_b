@@ -18,7 +18,6 @@ Team::Team(Character* leader):size(0){
     }
     this->leader = leader;
     leader->setInTeam(true);
-    //this->warriors = new Character*[MAX_WARRIORS];
     for(int i = 0; i < MAX_WARRIORS; i++){
         warriors[i] = nullptr;
     }

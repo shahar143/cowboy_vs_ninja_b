@@ -12,7 +12,7 @@ int Cowboy::getBullets() const{
     return bullets;
 }
 
-Cowboy::~Cowboy(){}
+//Cowboy::~Cowboy(){}
 
 void Cowboy::shoot(Character* target){
     if(target == nullptr){

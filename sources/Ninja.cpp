@@ -7,14 +7,11 @@
 using namespace ariel;
 using namespace std;
 
-Ninja::Ninja(Point position, int hitsp, const string& name, int speed):Character(position, hitsp, name), speed(speed){}
+Ninja::Ninja(Point position, int hp_p, const string& name, int speed):Character(position, hp_p, name), speed(speed){}
 
 int Ninja::getSpeed() const{
     return speed;
 }
-
-Ninja::~Ninja(){}
-
 
 void Ninja::slash(Character* target){
     if(target == nullptr){

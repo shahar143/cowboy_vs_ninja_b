@@ -10,15 +10,55 @@
 namespace ariel{
     class Cowboy: public Character{
     private:
+        /**
+         * @brief The number of bullets
+         */
         int bullets;
     public:
-        Cowboy(const string& name, Point position);
-        ~Cowboy()override;
 
+        /**
+         * @brief Construct a new Cowboy object
+         * @param name the name of the cowboy
+         * @param position Point object that represent the position of the cowboy
+         */
+        Cowboy(const string& name, Point position);
+
+        /**
+         * @brief Destroy the Cowboy object
+         * Override the default destructor of Character
+         */
+        ~Cowboy() override = default;
+
+        /**
+         * @brief for the rule of 5
+         */
+        Cowboy(const Cowboy& other) = delete;
+        Cowboy& operator=(const Cowboy& other) = delete;
+        Cowboy(Cowboy&& other) = delete;
+        Cowboy& operator=(Cowboy&& other) = delete;
+        Cowboy() = delete;
+
+        /**
+         * @brief Return the number of bullets
+         * @return int
+         */
         int getBullets() const;
+
+        /**
+         * @brief Return true if the cowboy has bullets
+         * @return bool
+         */
         bool hasboolets() const;
 
+        /**
+         * @brief Shoot on the target
+         * @param target Character object which is the target to shoot
+         */
         void shoot(Character* target);
+
+        /**
+         * @brief Reload the bullets - set the number of bullets to 6
+         */
         void reload();
     };
 }

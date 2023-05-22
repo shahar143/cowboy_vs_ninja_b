@@ -10,6 +10,12 @@
 namespace ariel{
     class OldNinja: public Ninja{
     public:
+        /**
+         * @brief Construct a new OldNinja object
+         * @param name the name of the ninja
+         * @param position Point object that represent the position of the ninja
+         * The OldNinja has 150 health points and it's speed is 8
+         */
         OldNinja(const string& name, Point position);
     };
 }

@@ -11,13 +11,15 @@ constexpr int  MAX_WARRIORS = 10;
 #include "OldNinja.hpp"
 #include "Cowboy.hpp"
 
+#include <iostream>
+
 
 namespace ariel{
     class Team{
     protected:
-        Character* warriors[MAX_WARRIORS];
-        Character* leader;
-        int size; //number of warriors in the team
+        Character* warriors[MAX_WARRIORS]; //NOLINT
+        Character* leader; //NOLINT
+        int size; //NOLINT
     public:
         /**
          * @brief Construct a new Team object
@@ -28,6 +30,16 @@ namespace ariel{
         Team(Character* leader);
         virtual ~Team();
 
+
+        /**
+         * @brief for the rule of 5
+         */
+        Team() = delete;
+        Team(const Team&) = delete;
+        Team& operator=(const Team&) = delete;
+        Team(Team&&) = delete;
+        Team& operator=(Team&&) = delete;
+
         /**
          * @brief add a character to the team
          * @param character
@@ -37,19 +49,37 @@ namespace ariel{
         virtual void add(Character* character);
 
         /**
-         * @brief attack the other team, goes over cowboys first and only after goes over Ninjas
+         * @brief attack the other team,
+         * during an attack on a victim, attack function iterates over cowboys first and only after iterates over Ninjas
          * @param team
          * @throws invalid_argument if the team is null
          * @throws runtime_error if the team is the same team
          * @throws runtime_error if the team is dead
          */
         virtual void attack(Team* team);
-        void choose_closest_to_leader();
-        Character* find_closest_victim(Team* team);
-        int stillAlive();
-        void print() const;
-        
 
+        /**
+         * @brief choose the closest warrior to the leader of (this) team
+         */
+        void choose_closest_to_leader();
+
+        /**
+         * @brief find the closest victim from team to the leader of the (this)
+         * @param team
+         * @return Character*
+         */
+        Character* find_closest_victim(Team* team);
+
+        /**
+         * @brief find the closest warrior to the leader
+         * @return Character*
+         */
+        int stillAlive();
+
+        /**
+         * @brief print the team stats
+         */
+        void print() const;
     };
 }
 

@@ -12,34 +12,6 @@ using namespace std;
 
 Team2::Team2(Character* leader): Team(leader){}
 
- Team2::~Team2(){}
-
-
-/*void Team2::add(Character* character){
-    if(this->size == MAX_WARRIORS){
-        throw runtime_error("Team is full");
-    }
-    if(character->getInTeam()){
-        throw runtime_error("Character already in another team");
-    }
-    warriors[size] = character;
-    character->setInTeam(true);
-    size++;
-}*/
-
-/*
-int Team2::stillAlive(){
-    int counter = 0;
-    for(int i = 0; i < size; i++){
-        if(warriors[i] != nullptr && warriors[i]->isAlive()){
-            counter++;
-        }
-    }
-    return counter;
-}
-*/
-
-
 void Team2::attack(Team* team) {
      if (team == nullptr){
         throw invalid_argument("Team cannot be null");
@@ -83,26 +55,5 @@ void Team2::attack(Team* team) {
             }
         }
     }
-    
-    /*for(int i = 0; i < size; i++){
-        if(warriors[i] == nullptr){
-            continue;
-        }
-          if(!victim->isAlive()){
-            victim = find_closest_victim(team);
-        }
-        if(team->stillAlive()<=0 | this->stillAlive()<=0) break;
-        if(warriors[i]->isAlive() && victim->isAlive()&&warriors[i]!=victim){ // ??
-            Ninja* ninja = dynamic_cast<Ninja*>(warriors[i]);
-            if(ninja != nullptr && ninja->isAlive()) {
-                if(warriors[i]->distance(victim) <= 1){
-                    ninja->slash(victim);
-                }
-                else{
-                    ninja->move(victim);
-                }
-            }
-        }
-   }*/
 }
 

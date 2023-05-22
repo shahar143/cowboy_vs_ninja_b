@@ -7,29 +7,27 @@
 using namespace ariel;
 using namespace std;
 
-Character::Character(const Point& position, int hitsp, const string& name):position(position), hitsp(hitsp), name(name){}
+Character::Character(const Point& position, int hp_p, const string& name):position(position), hp_p(hp_p), name(name){}
 
 Point& Character::getLocation(){
     return position;
 }
 
 void Character::setPosition(ariel::Point other){
-
     this->position.setX(other.getX());
     this->position.setY(other.getY());
 
 }
 
-
 int Character::getHp() const{
-    return hitsp;
+    return hp_p;
 }
 const string& Character::getName() const{
     return name;
 }
 
 bool Character::isAlive() const{
-    if(hitsp > 0){
+    if(hp_p > 0){
         return true;
     }
     return false;
@@ -48,12 +46,12 @@ double Character::distance(Character* other){
 }
 
 string Character::print() const{
-    return name + " " + position.print() + " " + to_string(hitsp);
+    return name + " " + position.print() + " " + to_string(hp_p);
 }
 
 void Character::hit(int damage){
     if(damage < 0){
         throw invalid_argument("damage cannot be negative");
     }
-    hitsp -= damage;
+    hp_p -= damage;
 }
